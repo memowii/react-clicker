@@ -1,5 +1,6 @@
 import React from "react";
 import "../styles/Clicker.css";
+import Button from "./Button";
 
 class Clicker extends React.Component {
   constructor(props) {
@@ -20,45 +21,32 @@ class Clicker extends React.Component {
   };
 
   redoCounter = () => {
-      this.setState({
-          counter: 0
-      })
-  }
+    this.setState({
+      counter: 0
+    });
+  };
 
   render() {
     return (
-      <div className="Clicker container">
+      <div className="Clicker">
         <div className="row">
           <div className="col text-center counter">{this.state.counter}</div>
         </div>
         <div className="row buttons">
           <div className="col-4">
-            <button
-              onClick={this.increaseCounter}
-              type="button"
-              class="btn btn-success"
-            >
-              <i class="fas fa-plus"></i>
-            </button>
+            <Button btnType={"btn-success"} onClick={this.increaseCounter}>
+              <i className="fas fa-plus"></i>
+            </Button>
           </div>
           <div className="col-4">
-            <button
-                onClick={this.redoCounter}
-              type="button"
-              style={{ color: "black" }}
-              class="btn btn-warning"
-            >
-              <i class="fas fa-redo"></i>
-            </button>
+            <Button btnType={"btn-warning btn-black"} onClick={this.redoCounter}>
+              <i className="fas fa-redo"></i>
+            </Button>
           </div>
           <div className="col-4">
-            <button
-              onClick={this.decreeseCounter}
-              type="button"
-              class="btn btn-danger"
-            >
-              <i class="fas fa-minus"></i>
-            </button>
+            <Button btnType={"btn-danger"} onClick={this.decreeseCounter}>
+              <i className="fas fa-minus"></i>
+            </Button>
           </div>
         </div>
       </div>

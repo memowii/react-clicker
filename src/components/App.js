@@ -1,5 +1,6 @@
 import React from 'react';
 import Clicker from './Clicker';
+import './App.css';
 
 function App() {
   return (
