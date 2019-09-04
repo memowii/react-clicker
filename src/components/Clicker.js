@@ -1,11 +1,15 @@
 import React from "react";
 import "../styles/Clicker.css";
 import Button from "./Button";
+import ContentEditable from "react-contenteditable";
 
 class Clicker extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { counter: 0 };
+    this.state = {
+      counter: 0,
+      contentEditableHtml: "Title"
+    };
   }
 
   increaseCounter = () => {
@@ -26,9 +30,39 @@ class Clicker extends React.Component {
     });
   };
 
+  highlightContent = () => {
+    setTimeout(() => {
+      document.execCommand("selectAll", false, null);
+    }, 0);
+  };
+
+  handleEnterKey = event => {
+    if (event.keyCode === 13) {
+      event.preventDefault();
+      document.activeElement.blur();
+    }
+  };
+
+  handleChange = event => {
+    this.setState({ contentEditableHtml: event.target.value });
+  };
+
   render() {
     return (
-      <div className="Clicker">
+      <div className="container Clicker">
+        <div className="row">
+          <div className="title w-100 text-center">
+            <ContentEditable
+              innerRef={this.contentEditable}
+              html={this.state.contentEditableHtml}
+              disabled={false}
+              onChange={this.handleChange}
+              onFocus={this.highlightContent}
+              className="editable"
+              onKeyDown={this.handleEnterKey}
+            />
+          </div>
+        </div>
         <div className="row">
           <div className="col text-center counter">{this.state.counter}</div>
         </div>
@@ -39,7 +73,10 @@ class Clicker extends React.Component {
             </Button>
           </div>
           <div className="col-4">
-            <Button btnType={"btn-warning btn-black"} onClick={this.redoCounter}>
+            <Button
+              btnType={"btn-warning btn-black"}
+              onClick={this.redoCounter}
+            >
               <i className="fas fa-redo"></i>
             </Button>
           </div>

@@ -4,7 +4,7 @@ import './App.css';
 
 function App() {
   return (
-    <div className="App mt-3">
+    <div className="App d-flex justify-content-*-center mt-3">
       <Clicker />
     </div>
   );
