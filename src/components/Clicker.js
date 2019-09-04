@@ -1,7 +1,7 @@
 import React from "react";
 import "../styles/Clicker.css";
 import Button from "./Button";
-import ContentEditable from "react-contenteditable";
+import ClickerTitle from "./ClickerTitle";
 
 class Clicker extends React.Component {
   constructor(props) {
@@ -30,19 +30,6 @@ class Clicker extends React.Component {
     });
   };
 
-  highlightContent = () => {
-    setTimeout(() => {
-      document.execCommand("selectAll", false, null);
-    }, 0);
-  };
-
-  handleEnterKey = event => {
-    if (event.keyCode === 13) {
-      event.preventDefault();
-      document.activeElement.blur();
-    }
-  };
-
   handleChange = event => {
     this.setState({ contentEditableHtml: event.target.value });
   };
@@ -52,14 +39,9 @@ class Clicker extends React.Component {
       <div className="container Clicker">
         <div className="row">
           <div className="title w-100 text-center">
-            <ContentEditable
-              innerRef={this.contentEditable}
+            <ClickerTitle
               html={this.state.contentEditableHtml}
-              disabled={false}
               onChange={this.handleChange}
-              onFocus={this.highlightContent}
-              className="editable"
-              onKeyDown={this.handleEnterKey}
             />
           </div>
         </div>

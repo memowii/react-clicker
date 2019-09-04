@@ -1,5 +1,5 @@
 .Clicker {
-  width: 300px ;
+  width: 300px;
   border: 1px solid #dee2e6;
 }
 
@@ -9,10 +9,6 @@
   font-size: 96px;
   font-weight: 300;
   text-size-adjust: 100%;
-}
-
-.title {
-  
 }
 
 .buttons div {
