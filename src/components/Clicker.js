@@ -1,7 +1,8 @@
 import React from "react";
-import "../styles/Clicker.css";
-import Button from "./Button";
 import ClickerTitle from "./ClickerTitle";
+import Button from "./Button";
+
+import "../styles/Clicker.css";
 
 class Clicker extends React.Component {
   constructor(props) {
@@ -14,12 +15,14 @@ class Clicker extends React.Component {
 
   increaseCounter = () => {
     this.setState({
+      
       counter: this.state.counter + 1
     });
   };
 
   decreeseCounter = () => {
     this.setState({
+      ...this.state,
       counter: this.state.counter - 1
     });
   };
@@ -31,7 +34,10 @@ class Clicker extends React.Component {
   };
 
   handleChange = event => {
-    this.setState({ contentEditableHtml: event.target.value });
+    this.setState({ 
+      ...this.state,
+      contentEditableHtml: event.target.value 
+    });
   };
 
   render() {

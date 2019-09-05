@@ -1,13 +1,13 @@
 import React from "react";
 import Clicker from "./Clicker";
+import Layout from "../pages/Layout";
+
 import "./App.css";
 
-function App() {
-  return (
-    <div className="App d-flex justify-content-*-center mt-3">
-      <Clicker />
-    </div>
-  );
-}
+const App = () => (
+  <Layout>
+    <Clicker />
+  </Layout>
+);
 
 export default App;
