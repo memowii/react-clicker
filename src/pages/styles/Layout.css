@@ -5,3 +5,8 @@
 .fa-calculator {
   font-size: 40px;
 }
+
+h2 {
+  position: relative;
+  top: 5px;
+}

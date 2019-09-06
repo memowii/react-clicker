@@ -4,10 +4,96 @@ import Layout from "../pages/Layout";
 
 import "./App.css";
 
-const App = () => (
-  <Layout>
-    <Clicker />
-  </Layout>
-);
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      clickers: [
+        {
+          id: 1,
+          counter: 0,
+          contentEditableHtml: "Title"
+        }
+      ]
+    };
+  }
+
+  increaseCounter = index => {
+    const clickers = this.state.clickers.slice();
+
+    const clicker = {
+      ...clickers[index],
+      counter: clickers[index].counter + 1
+    };
+
+    clickers[index] = clicker;
+
+    this.setState({
+      clickers: clickers
+    });
+  };
+
+  decreeseCounter = index => {
+    const clickers = this.state.clickers.slice();
+
+    const clicker = {
+      ...clickers[index],
+      counter: clickers[index].counter - 1
+    };
+
+    clickers[index] = clicker;
+
+    this.setState({
+      clickers: clickers
+    });
+  };
+
+  redoCounter = index => {
+    const clickers = this.state.clickers.slice();
+
+    const clicker = {
+      ...clickers[index],
+      counter: 0
+    };
+
+    clickers[index] = clicker;
+
+    this.setState({
+      clickers: clickers
+    });
+  };
+
+  handleChange = (event, index) => {
+    const clickers = this.state.clickers.slice();
+
+    const clicker = {
+      ...clickers[index],
+      contentEditableHtml: event.target.value
+    };
+
+    clickers[index] = clicker;
+
+    this.setState({
+      clickers: clickers
+    });
+  };
+
+  render() {
+    return (
+      <Layout>
+        {this.state.clickers.map((clicker, index) => (
+          <Clicker
+            key={clicker.id}
+            clicker={clicker}
+            onPlus={() => this.increaseCounter(index)}
+            onMinus={() => this.decreeseCounter(index)}
+            onArrow={() => this.redoCounter(index)}
+            handleChange={event => this.handleChange(event, index)}
+          />
+        ))}
+      </Layout>
+    );
+  }
+}
 
 export default App;
