@@ -1,6 +1,7 @@
 import React from "react";
 import Clicker from "./Clicker";
 import Layout from "../pages/Layout";
+import Actions from "../components/Actions";
 
 import "./App.css";
 
@@ -78,19 +79,37 @@ class App extends React.Component {
     });
   };
 
+  createClicker = () => {
+    const clickers = this.state.clickers.slice();
+    const lastId = clickers[clickers.length - 1].id;
+    clickers.push({
+      id: lastId + 1,
+      counter: 0,
+      contentEditableHtml: "Title"
+    });
+
+    this.setState({
+      clickers
+    });
+  };
+
   render() {
     return (
       <Layout>
-        {this.state.clickers.map((clicker, index) => (
-          <Clicker
-            key={clicker.id}
-            clicker={clicker}
-            onPlus={() => this.increaseCounter(index)}
-            onMinus={() => this.decreeseCounter(index)}
-            onArrow={() => this.redoCounter(index)}
-            handleChange={event => this.handleChange(event, index)}
-          />
-        ))}
+        <Actions onPlus={this.createClicker} />
+
+        <div className="d-flex flex-wrap">
+          {this.state.clickers.map((clicker, index) => (
+            <Clicker
+              key={clicker.id}
+              clicker={clicker}
+              onPlus={() => this.increaseCounter(index)}
+              onMinus={() => this.decreeseCounter(index)}
+              onArrow={() => this.redoCounter(index)}
+              handleChange={event => this.handleChange(event, index)}
+            />
+          ))}
+        </div>
       </Layout>
     );
   }
