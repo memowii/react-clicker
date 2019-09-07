@@ -14,7 +14,8 @@ class App extends React.Component {
           id: 1,
           counter: 0,
           contentEditableHtml: "Title",
-          isBtnDeleteShow: false
+          isBtnDeleteShow: false,
+          isDisabled: false
         }
       ]
     };
@@ -97,6 +98,7 @@ class App extends React.Component {
   toggleBtnsDetele = () => {
     const clickers = this.state.clickers.map(clicker => {
       clicker.isBtnDeleteShow = !clicker.isBtnDeleteShow;
+      clicker.isDisabled = !clicker.isDisabled;
       return clicker;
     });
 
@@ -120,6 +122,7 @@ class App extends React.Component {
               onArrow={() => this.redoCounter(index)}
               handleChange={event => this.handleChange(event, index)}
               isBtnDeleteShow={clicker.isBtnDeleteShow}
+              isDisabled={clicker.isDisabled}
             />
           ))}
         </div>

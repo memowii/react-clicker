@@ -13,6 +13,7 @@ class Clicker extends React.Component {
             <ClickerTitle
               html={this.props.clicker.contentEditableHtml}
               handleChange={this.props.handleChange}
+              isDisabled={this.props.isDisabled}
             />
 
             {this.props.isBtnDeleteShow && (
@@ -31,7 +32,11 @@ class Clicker extends React.Component {
 
         <div className="row buttons">
           <div className="col-4">
-            <Button btnType={"btn-success"} onClick={this.props.onPlus}>
+            <Button
+              btnType={"btn-success"}
+              onClick={this.props.onPlus}
+              isDisabled={this.props.isDisabled}
+            >
               <i className="fas fa-plus"></i>
             </Button>
           </div>
@@ -40,13 +45,18 @@ class Clicker extends React.Component {
             <Button
               btnType={"btn-warning btn-black"}
               onClick={this.props.onArrow}
+              isDisabled={this.props.isDisabled}
             >
               <i className="fas fa-redo"></i>
             </Button>
           </div>
 
           <div className="col-4">
-            <Button btnType={"btn-danger"} onClick={this.props.onMinus}>
+            <Button
+              btnType={"btn-danger"}
+              onClick={this.props.onMinus}
+              isDisabled={this.props.isDisabled}
+            >
               <i className="fas fa-minus"></i>
             </Button>
           </div>
