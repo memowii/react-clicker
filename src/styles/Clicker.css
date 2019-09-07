@@ -2,6 +2,7 @@
   width: 300px;
   border: 1px solid #dee2e6;
   margin: 20px;
+  position: relative;
 }
 
 .counter {
@@ -18,4 +19,13 @@
 
 .editable {
   background-color: #f8f9fa;
+}
+
+.btn-delete {
+  position: absolute;
+  top: 0px;
+  z-index: 1;
+  left: calc(100% - 27px);
+  border-radius: 100%;
+  padding: 1px 7px;
 }

@@ -13,7 +13,8 @@ class App extends React.Component {
         {
           id: 1,
           counter: 0,
-          contentEditableHtml: "Title"
+          contentEditableHtml: "Title",
+          isBtnDeleteShow: false
         }
       ]
     };
@@ -93,10 +94,21 @@ class App extends React.Component {
     });
   };
 
+  toggleBtnsDetele = () => {
+    const clickers = this.state.clickers.map(clicker => {
+      clicker.isBtnDeleteShow = !clicker.isBtnDeleteShow;
+      return clicker;
+    });
+
+    this.setState({
+      clickers
+    });
+  };
+
   render() {
     return (
       <Layout>
-        <Actions onPlus={this.createClicker} />
+        <Actions onPlus={this.createClicker} onDelete={this.toggleBtnsDetele} />
 
         <div className="d-flex flex-wrap">
           {this.state.clickers.map((clicker, index) => (
@@ -107,6 +119,7 @@ class App extends React.Component {
               onMinus={() => this.decreeseCounter(index)}
               onArrow={() => this.redoCounter(index)}
               handleChange={event => this.handleChange(event, index)}
+              isBtnDeleteShow={clicker.isBtnDeleteShow}
             />
           ))}
         </div>

@@ -9,22 +9,33 @@ class Clicker extends React.Component {
     return (
       <div className="container Clicker">
         <div className="row">
-          <div className="title w-100 text-center">
+          <div className="w-100 text-center">
             <ClickerTitle
               html={this.props.clicker.contentEditableHtml}
               handleChange={this.props.handleChange}
             />
+
+            {this.props.isBtnDeleteShow && (
+              <button type="button" className="btn btn-danger btn-delete">
+                <i className="fas fa-times"></i>
+              </button>
+            )}
           </div>
         </div>
+
         <div className="row">
-          <div className="col text-center counter">{this.props.clicker.counter}</div>
+          <div className="col text-center counter">
+            {this.props.clicker.counter}
+          </div>
         </div>
+
         <div className="row buttons">
           <div className="col-4">
             <Button btnType={"btn-success"} onClick={this.props.onPlus}>
               <i className="fas fa-plus"></i>
             </Button>
           </div>
+
           <div className="col-4">
             <Button
               btnType={"btn-warning btn-black"}
@@ -33,6 +44,7 @@ class Clicker extends React.Component {
               <i className="fas fa-redo"></i>
             </Button>
           </div>
+
           <div className="col-4">
             <Button btnType={"btn-danger"} onClick={this.props.onMinus}>
               <i className="fas fa-minus"></i>

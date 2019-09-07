@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 
 const Actions = props => (
   <div className="Actions">
@@ -8,8 +8,8 @@ const Actions = props => (
       <i className="fas fa-plus"></i>
     </button>
 
-    <button className="btn btn-danger m-1">
-      <i className="fas fa-times"></i>
+    <button onClick={props.onDelete} className="btn btn-danger m-1">
+      <i className="fas fa-trash-alt"></i>
     </button>
   </div>
 );
