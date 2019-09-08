@@ -18,7 +18,8 @@ class App extends React.Component {
           isDisabled: false
         }
       ],
-      isBtnPlusDisabled: false
+      isBtnPlusDisabled: false,
+      isBtnDeleteDisabled: false
     };
 
     document.addEventListener("click", event => {
@@ -90,15 +91,18 @@ class App extends React.Component {
   createClicker = () => {
     const clickers = this.state.clickers.slice();
     let lastId;
-    
+
     if (!clickers.length) {
       lastId = 0;
+      this.setState({
+        isBtnDeleteDisabled: !this.state.isBtnDeleteDisabled
+      });
     } else {
       lastId = clickers[clickers.length - 1].id + 1;
     }
 
     clickers.push({
-      id: lastId ,
+      id: lastId,
       counter: 0,
       contentEditableHtml: "Title"
     });
@@ -129,7 +133,8 @@ class App extends React.Component {
     if (!clickers.length) {
       this.setState({
         clickers,
-        isBtnPlusDisabled: !this.state.isBtnPlusDisabled
+        isBtnPlusDisabled: !this.state.isBtnPlusDisabled,
+        isBtnDeleteDisabled: !this.state.isBtnDeleteDisabled
       });
       return;
     }
@@ -146,6 +151,7 @@ class App extends React.Component {
           onPlus={this.createClicker}
           onDelete={this.toggleBtnsDetele}
           isDisabled={this.state.isBtnPlusDisabled}
+          isBtnDeleteDisabled={this.state.isBtnDeleteDisabled}
         />
 
         <div className="d-flex flex-wrap">

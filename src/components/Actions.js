@@ -12,7 +12,11 @@ const Actions = props => (
       <i className="fas fa-plus"></i>
     </button>
 
-    <button onClick={props.onDelete} className="btn btn-danger m-1">
+    <button
+      onClick={props.onDelete}
+      className="btn btn-danger m-1"
+      disabled={props.isBtnDeleteDisabled}
+    >
       <i className="fas fa-trash-alt"></i>
     </button>
   </div>
