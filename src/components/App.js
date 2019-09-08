@@ -17,8 +17,14 @@ class App extends React.Component {
           isBtnDeleteShow: false,
           isDisabled: false
         }
-      ]
+      ],
+      isBtnPlusDisabled: false
     };
+
+    document.addEventListener("click", event => {
+      let clickers = document.getElementsByClassName("Clicker");
+      let clickedElement = event.target;
+    });
   }
 
   increaseCounter = index => {
@@ -83,9 +89,16 @@ class App extends React.Component {
 
   createClicker = () => {
     const clickers = this.state.clickers.slice();
-    const lastId = clickers[clickers.length - 1].id;
+    let lastId;
+    
+    if (!clickers.length) {
+      lastId = 0;
+    } else {
+      lastId = clickers[clickers.length - 1].id + 1;
+    }
+
     clickers.push({
-      id: lastId + 1,
+      id: lastId ,
       counter: 0,
       contentEditableHtml: "Title"
     });
@@ -96,11 +109,30 @@ class App extends React.Component {
   };
 
   toggleBtnsDetele = () => {
-    const clickers = this.state.clickers.map(clicker => {
+    const clickers = this.state.clickers.concat();
+    const updatedClickers = clickers.map(clicker => {
       clicker.isBtnDeleteShow = !clicker.isBtnDeleteShow;
       clicker.isDisabled = !clicker.isDisabled;
       return clicker;
     });
+
+    this.setState({
+      clickers: updatedClickers,
+      isBtnPlusDisabled: !this.state.isBtnPlusDisabled
+    });
+  };
+
+  deleteClicker = index => {
+    const clickers = this.state.clickers.slice();
+    clickers.splice(index, 1);
+
+    if (!clickers.length) {
+      this.setState({
+        clickers,
+        isBtnPlusDisabled: !this.state.isBtnPlusDisabled
+      });
+      return;
+    }
 
     this.setState({
       clickers
@@ -110,7 +142,11 @@ class App extends React.Component {
   render() {
     return (
       <Layout>
-        <Actions onPlus={this.createClicker} onDelete={this.toggleBtnsDetele} />
+        <Actions
+          onPlus={this.createClicker}
+          onDelete={this.toggleBtnsDetele}
+          isDisabled={this.state.isBtnPlusDisabled}
+        />
 
         <div className="d-flex flex-wrap">
           {this.state.clickers.map((clicker, index) => (
@@ -123,6 +159,7 @@ class App extends React.Component {
               handleChange={event => this.handleChange(event, index)}
               isBtnDeleteShow={clicker.isBtnDeleteShow}
               isDisabled={clicker.isDisabled}
+              onDelete={() => this.deleteClicker(index)}
             />
           ))}
         </div>

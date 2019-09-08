@@ -17,7 +17,11 @@ class Clicker extends React.Component {
             />
 
             {this.props.isBtnDeleteShow && (
-              <button type="button" className="btn btn-danger btn-delete">
+              <button
+                type="button"
+                className="btn btn-danger btn-delete"
+                onClick={this.props.onDelete}
+              >
                 <i className="fas fa-times"></i>
               </button>
             )}

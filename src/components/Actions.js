@@ -4,7 +4,11 @@ const Actions = props => (
   <div className="Actions">
     <h2 className="d-inline mr-2">Actions:</h2>
 
-    <button onClick={props.onPlus} className="btn btn-primary m-1">
+    <button
+      onClick={props.onPlus}
+      className="btn btn-primary m-1"
+      disabled={props.isDisabled}
+    >
       <i className="fas fa-plus"></i>
     </button>
 
