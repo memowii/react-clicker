@@ -14,7 +14,7 @@ const Actions = props => (
 
     <button
       onClick={props.onDelete}
-      className="btn btn-danger m-1"
+      className="btn btn-danger m-1 on-focus-delete"
       disabled={props.isBtnDeleteDisabled}
     >
       <i className="fas fa-trash-alt"></i>

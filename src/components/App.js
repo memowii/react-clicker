@@ -21,12 +21,29 @@ class App extends React.Component {
       isBtnPlusDisabled: false,
       isBtnDeleteDisabled: false
     };
-
-    document.addEventListener("click", event => {
-      let clickers = document.getElementsByClassName("Clicker");
-      let clickedElement = event.target;
-    });
   }
+
+  hasParent = (element, className) => {
+    while (element !== document) {
+      if (element.className.includes(className)) return true;
+      element = element.parentNode;
+    }
+    return false;
+  };
+
+  componentDidMount = () => {
+    document.addEventListener("click", event => {
+      let clickedElement = event.target;
+
+      if (this.hasParent(clickedElement, "on-focus-delete")) {
+        return;
+      }
+
+      if (this.state.isBtnPlusDisabled && this.state.clickers[0].isDisabled) {
+        this.toggleBtnsDetele();
+      }
+    });
+  };
 
   increaseCounter = index => {
     const clickers = this.state.clickers.slice();
