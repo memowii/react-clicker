@@ -21,8 +21,9 @@ class ClickerTitle extends React.Component {
         innerRef={this.contentEditable}
         html={this.props.html}
         disabled={this.props.isDisabled}
-        onChange={this.props.handleChange}
+        onChange={this.props.handleTitleChange}
         onFocus={this.highlightContent}
+        onBlur={this.props.handleTitleBlur}
         className="editable"
         onKeyDown={this.handleEnterKey}
       />

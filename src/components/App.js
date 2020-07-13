@@ -13,7 +13,7 @@ class App extends React.Component {
         {
           id: 1,
           counter: 0,
-          contentEditableHtml: "Title",
+          contentEditableHtml: "Set A Title",
           isBtnDeleteShow: false,
           isDisabled: false
         }
@@ -90,7 +90,7 @@ class App extends React.Component {
     });
   };
 
-  handleChange = (event, index) => {
+  handleTitleChange = (event, index) => {
     const clickers = this.state.clickers.slice();
 
     const clicker = {
@@ -104,6 +104,19 @@ class App extends React.Component {
       clickers: clickers
     });
   };
+
+  handleTitleBlur = (event, index) => {
+    const clickers = this.state.clickers.slice();
+
+    const clicker = clickers[index];
+    clicker.contentEditableHtml = clicker.contentEditableHtml.replace(/&nbsp;/g, '');
+
+    clickers[index] = clicker;
+
+    this.setState({
+      clickers: clickers
+    });
+  }
 
   createClicker = () => {
     const clickers = this.state.clickers.slice();
@@ -179,7 +192,8 @@ class App extends React.Component {
               onPlus={() => this.increaseCounter(index)}
               onMinus={() => this.decreeseCounter(index)}
               onArrow={() => this.redoCounter(index)}
-              handleChange={event => this.handleChange(event, index)}
+              handleTitleChange={event => this.handleTitleChange(event, index)}
+              handleTitleBlur={event => this.handleTitleBlur(event, index)}
               isBtnDeleteShow={clicker.isBtnDeleteShow}
               isDisabled={clicker.isDisabled}
               onDelete={() => this.deleteClicker(index)}

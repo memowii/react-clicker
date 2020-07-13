@@ -12,7 +12,8 @@ class Clicker extends React.Component {
           <div className="w-100 text-center">
             <ClickerTitle
               html={this.props.clicker.contentEditableHtml}
-              handleChange={this.props.handleChange}
+              handleTitleChange={this.props.handleTitleChange}
+              handleTitleBlur={this.props.handleTitleBlur}
               isDisabled={this.props.isDisabled}
             />
 
@@ -33,8 +34,8 @@ class Clicker extends React.Component {
           </div>
         </div>
 
-        <div className="row buttons">
-          <div className="col-4">
+        <div className="row">
+          <div className="btn-group w-100" role="group">
             <Button
               btnType={"btn-success"}
               onClick={this.props.onPlus}
@@ -42,9 +43,7 @@ class Clicker extends React.Component {
             >
               <i className="fas fa-plus"></i>
             </Button>
-          </div>
 
-          <div className="col-4">
             <Button
               btnType={"btn-warning btn-black"}
               onClick={this.props.onArrow}
@@ -52,9 +51,7 @@ class Clicker extends React.Component {
             >
               <i className="fas fa-redo"></i>
             </Button>
-          </div>
 
-          <div className="col-4">
             <Button
               btnType={"btn-danger"}
               onClick={this.props.onMinus}
