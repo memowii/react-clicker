@@ -1,8 +1,8 @@
 import React from "react";
+
 import Clicker from "./Clicker";
 import Layout from "../pages/Layout";
 import Actions from "../components/Actions";
-
 import "./App.css";
 
 class App extends React.Component {

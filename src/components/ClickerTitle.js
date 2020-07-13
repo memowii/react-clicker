@@ -1,5 +1,4 @@
 import React from "react";
-
 import ContentEditable from "react-contenteditable";
 
 class ClickerTitle extends React.Component {
