@@ -1,9 +1,9 @@
 import React from "react";
 
 import Clicker from "./Clicker";
-import Layout from "../pages/Layout";
+import Layout from "./Layout";
 import Actions from "../components/Actions";
-import "./App.css";
+import "./styles/App.css";
 
 class App extends React.Component {
   constructor(props) {
