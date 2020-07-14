@@ -42,7 +42,7 @@ class App extends React.Component {
         return;
       }
 
-      if (this.state.isBtnPlusDisabled && this.state.clickers[0].isDisabled) {
+      if (this.state.isDeletingModeOn) {
         this.toggleBtnsDetele();
       }
     });

@@ -2,7 +2,7 @@ import React from "react";
 
 import ClickerTitle from "./ClickerTitle";
 import Button from "./Button";
-import "./Clicker.css";
+import "./styles/Clicker.css";
 
 class Clicker extends React.Component {
   render() {
