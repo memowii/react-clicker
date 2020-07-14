@@ -37,11 +37,11 @@ class Clicker extends React.Component {
         <div className="row">
           <div className="btn-group w-100" role="group">
             <Button
-              btnType={"btn-success"}
-              onClick={this.props.onPlus}
+              btnType={"btn-danger"}
+              onClick={this.props.onMinus}
               isDisabled={this.props.isDisabled}
             >
-              <i className="fas fa-plus"></i>
+              <i className="fas fa-minus"></i>
             </Button>
 
             <Button
@@ -53,11 +53,11 @@ class Clicker extends React.Component {
             </Button>
 
             <Button
-              btnType={"btn-danger"}
-              onClick={this.props.onMinus}
+              btnType={"btn-success"}
+              onClick={this.props.onPlus}
               isDisabled={this.props.isDisabled}
             >
-              <i className="fas fa-minus"></i>
+              <i className="fas fa-plus"></i>
             </Button>
           </div>
         </div>

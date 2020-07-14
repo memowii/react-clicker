@@ -7,3 +7,15 @@
   font-weight: 400;
   border-radius: initial;
 }
+
+.Button--disabled {
+  opacity: 0.5;
+  box-shadow: none;
+  cursor: auto !important;
+  z-index: -1;
+}
+
+.button--disabled:hover {
+  background-color: #007bff;
+  border-color: #007bff;
+}

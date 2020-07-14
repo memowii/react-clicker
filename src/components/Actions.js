@@ -6,8 +6,7 @@ const Actions = props => (
 
     <button
       onClick={props.onPlus}
-      className="btn btn-primary m-1"
-      disabled={props.isDisabled}
+      className={`btn btn-primary m-1 ${props.isDisabled ? 'Button--disabled button--disabled' : ''}`}
     >
       <i className="fas fa-plus"></i>
     </button>

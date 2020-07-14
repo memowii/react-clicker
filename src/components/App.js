@@ -5,6 +5,8 @@ import Layout from "./Layout";
 import Actions from "../components/Actions";
 import "./styles/App.css";
 
+const GENERAL_CLICKER_TITLE = "Set A Title";
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -13,13 +15,14 @@ class App extends React.Component {
         {
           id: 1,
           counter: 0,
-          contentEditableHtml: "Set A Title",
+          contentEditableHtml: GENERAL_CLICKER_TITLE,
           isBtnDeleteShow: false,
           isDisabled: false
         }
       ],
       isBtnPlusDisabled: false,
-      isBtnDeleteDisabled: false
+      isBtnDeleteDisabled: false,
+      isDeletingModeOn: false,
     };
   }
 
@@ -46,6 +49,10 @@ class App extends React.Component {
   };
 
   increaseCounter = index => {
+    if (this.state.isDeletingModeOn) {
+      return;
+    }
+
     const clickers = this.state.clickers.slice();
 
     const clicker = {
@@ -61,6 +68,10 @@ class App extends React.Component {
   };
 
   decreeseCounter = index => {
+    if (this.state.isDeletingModeOn) {
+      return;
+    }
+
     const clickers = this.state.clickers.slice();
 
     const clicker = {
@@ -76,6 +87,10 @@ class App extends React.Component {
   };
 
   redoCounter = index => {
+    if (this.state.isDeletingModeOn) {
+      return;
+    }
+
     const clickers = this.state.clickers.slice();
 
     const clicker = {
@@ -119,6 +134,10 @@ class App extends React.Component {
   }
 
   createClicker = () => {
+    if (this.state.isDeletingModeOn) {
+      return;
+    }
+
     const clickers = this.state.clickers.slice();
     let lastId;
 
@@ -134,7 +153,7 @@ class App extends React.Component {
     clickers.push({
       id: lastId,
       counter: 0,
-      contentEditableHtml: "Title"
+      contentEditableHtml: GENERAL_CLICKER_TITLE
     });
 
     this.setState({
@@ -152,7 +171,8 @@ class App extends React.Component {
 
     this.setState({
       clickers: updatedClickers,
-      isBtnPlusDisabled: !this.state.isBtnPlusDisabled
+      isBtnPlusDisabled: !this.state.isBtnPlusDisabled,
+      isDeletingModeOn: !this.state.isDeletingModeOn
     });
   };
 
@@ -164,7 +184,8 @@ class App extends React.Component {
       this.setState({
         clickers,
         isBtnPlusDisabled: !this.state.isBtnPlusDisabled,
-        isBtnDeleteDisabled: !this.state.isBtnDeleteDisabled
+        isBtnDeleteDisabled: !this.state.isBtnDeleteDisabled,
+        isDeletingModeOn: !this.state.isDeletingModeOn
       });
       return;
     }
