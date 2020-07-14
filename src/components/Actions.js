@@ -1,7 +1,7 @@
 import React from "react";
 
 const Actions = props => (
-  <div className="Actions">
+  <div className="Actions mb-4">
     <h2 className="d-inline mr-2">Actions:</h2>
 
     <button

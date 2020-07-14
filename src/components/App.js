@@ -205,7 +205,7 @@ class App extends React.Component {
           isBtnDeleteDisabled={this.state.isBtnDeleteDisabled}
         />
 
-        <div className="d-flex flex-wrap">
+        <div className="row">
           {this.state.clickers.map((clicker, index) => (
             <Clicker
               key={clicker.id}

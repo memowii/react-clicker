@@ -4,13 +4,17 @@ import Navbar from "./Navbar";
 import "./styles/Layout.css";
 
 const Layout = props => (
-  <React.Fragment>
-    <Navbar />
+  <>
+    <Navbar/>
 
-    <div className="container mt-4">
-      {props.children}
-    </div>
-  </React.Fragment>
+    <main>
+      <article>
+        <div className="container mt-4">
+          {props.children}
+        </div>
+      </article>
+    </main>
+  </>
 );
 
 export default Layout;

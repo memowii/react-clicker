@@ -1,8 +1,6 @@
-.Clicker {
-  width: 300px;
+.Clicker > .container {
+  max-width: 300px;
   border: 1px solid #dee2e6;
-  margin: 20px;
-  position: relative;
 }
 
 .counter {
