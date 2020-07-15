@@ -19,9 +19,13 @@
   background-color: #f8f9fa;
 }
 
-.btn-delete {
+.editable--opaque {
+  color: #b5b5b5;
+}
+
+.btn--delete {
   position: absolute;
-  top: 0px;
+  top: 0;
   z-index: 1;
   left: calc(100% - 27px);
   border-radius: 100%;

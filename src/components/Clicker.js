@@ -10,7 +10,7 @@ class Clicker extends React.Component {
       <div className="Clicker col-12 col-sm-6 col-md-4 mb-4">
         <div className="container" >
           <div className="row">
-            <div className="w-100 text-center">
+            <div className="w-100 text-center position-relative">
               <ClickerTitle
                 html={this.props.clicker.contentEditableHtml}
                 handleTitleChange={this.props.handleTitleChange}
@@ -20,7 +20,7 @@ class Clicker extends React.Component {
 
               {this.props.isBtnDeleteShow && (
                 <button
-                  className="btn btn-danger btn-delete on-focus-delete"
+                  className="btn btn-danger btn--delete on-focus-delete"
                   onClick={this.props.onDelete}
                 >
                   <i className="fas fa-times"></i>
